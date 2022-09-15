@@ -1,0 +1,17 @@
+{
+  "name": "quickstart-web-js-npm",
+  "version": "1.0.0",
+  "description": "Quickstart project that shows how to use DeepAR Web SDK as an imported module.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js --mode production && cp -r public/* dist",
+    "dev": "webpack serve --mode development --open --port 8888"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.0"
+  }
+}

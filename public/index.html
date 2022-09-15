@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title>DeepAR</title>
+  <style>
+    canvas.deepar {
+      border: 0px none;
+      background-color: black;
+      display: block;
+      margin: auto;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #loader-wrapper {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .loader {
+      display: inline-block;
+      position: relative;
+      top: 42%;
+      z-index: 1000;
+
+      width: 90px;
+      height: 90px;
+      margin: auto;
+      background-color: #00f;
+
+      border-radius: 100%;
+      -webkit-animation: sk-scaleout 1.5s infinite ease-in-out;
+      animation: sk-scaleout 1.5s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes sk-scaleout {
+      0% {
+        -webkit-transform: scale(0)
+      }
+
+      100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
+    @keyframes sk-scaleout {
+      0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      100% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+        opacity: 0;
+      }
+    }
+
+    .effect-carousel {
+      position: fixed !important;
+      width: 100%;
+      height: 130px;
+      bottom: 0px;
+      z-index: 999999;
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .thumb {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      position: relative;
+      opacity: 0.8;
+      transition: all 300ms ease;
+      height: 100px;
+    }
+
+    .slick-center .thumb {
+      -moz-transform: scale(1.3);
+      -ms-transform: scale(1.3);
+      -o-transform: scale(1.3);
+      -webkit-transform: scale(1.3);
+      color: #e67e22;
+      opacity: 1;
+      transform: scale(1.3);
+    }
+
+    .slick-slide {
+      width: 130px;
+    }
+
+    #recording-btn {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 200px;
+      height: 80px;
+      z-index: 99999;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+</head>
+
+<body>
+  <button id="recording-btn">Start/stop video recording</button>
+
+  <canvas class="deepar" id="deepar-canvas" oncontextmenu="event.preventDefault()"></canvas>
+  <div id="loader-wrapper">
+    <span class="loader"></span></span>
+  </div>
+
+  <div class="effect-carousel">
+    <div><img class="thumb" src="thumbs/galaxy.png"></div>
+    <div><img class="thumb" src="thumbs/aviators.png"></div>
+    <div><img class="thumb" src="thumbs/beard.png"></div>
+    <div><img class="thumb" src="thumbs/dalmatian.png"></div>
+    <div><img class="thumb" src="thumbs/flowers.png"></div>
+    <div><img class="thumb" src="thumbs/koala.png"></div>
+    <div><img class="thumb" src="thumbs/lion.png"></div>
+    <div><img class="thumb" src="thumbs/teddy_cigar.png"></div>
+  </div>
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
