@@ -33,7 +33,7 @@ const deepAR = new DeepAR({
 
       // or we can setup the video element externally and call deepAR.setVideoElement (see startExternalVideo function below)
 
-      deepAR.switchEffect(0, 'slot', effects.background_segmentation, () => {
+      deepAR.switchEffect(0, 'slot', effects.viking, () => {
         // effect loaded
       });
     }
@@ -167,14 +167,21 @@ $(document).ready(function () {
   });
 
   const effectList = [
-    effects.background_segmentation,
-    effects.aviators,
-    effects.beard,
-    effects.dalmatian,
-    effects.flowers,
-    effects.koala,
-    effects.lion,
-    effects.teddycigar,
+    effects.viking,
+    effects.makeup,
+    effects.makeup_split,
+    effects.stallone,
+    effects.flower_face,
+    effects.galaxy_bacground,
+    effects.humaniod,
+    effects.devil_horns,
+    effects.ping_pong,
+    effects.hearts,
+    effects.snail,
+    effects.hope,
+    effects.vendetta,
+    effects.fire,
+    effects.elephant_trunk
   ];
 
   $('.effect-carousel').on('afterChange', function (event, slick, currentSlide) {
