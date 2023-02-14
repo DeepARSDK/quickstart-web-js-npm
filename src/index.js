@@ -3,8 +3,8 @@ import deeparWasmPath from 'deepar/wasm/deepar.wasm';
 import faceTrackingModelPath from 'deepar/models/face/models-68-extreme.bin';
 import segmentationModelPath from 'deepar/models/segmentation/segmentation-160x160-opt.bin';
 import poseEstimationWasmPath from 'deepar/wasm/libxzimgPoseEstimation.wasm';
-import footDetectorPath from 'deepar/models/foot/foot-detector-android.bin';
-import footTrackerPath from 'deepar/models/foot/foot-tracker-android.bin';
+import footDetectorPath from 'deepar/models/foot/foot-detection-96x96x6.bin';
+import footTrackerPath from 'deepar/models/foot/foot-tracker-96x96x18-test.bin';
 import footObjPath from 'deepar/models/foot/foot-model.obj';
 import * as effects from './effects';
 
