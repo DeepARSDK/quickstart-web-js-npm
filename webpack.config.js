@@ -34,4 +34,17 @@ module.exports = {
     maxEntrypointSize: 1000000,
     maxAssetSize: 10000000,
   },
+  devServer: {
+    static: [
+      {
+        directory: path.join(__dirname, 'public')
+      },
+      {
+        directory: path.join(__dirname, 'node_modules/deepar'),
+        publicPath: "/deepar-resources"
+      },
+    ],
+    compress: true,
+    port: 9000,
+  },
 };
