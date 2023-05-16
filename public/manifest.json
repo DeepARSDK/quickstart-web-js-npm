@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "DeepAR Extensions",
+  "description": "Test extension for DeepAR Web SDK",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "deepar-webclip.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "permissions": [
+    "contentSettings"
+  ]
+}

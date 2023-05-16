@@ -28,6 +28,7 @@
       height: 100%;
       background-color: #fff;
       text-align: center;
+      display: none;
     }
 
     .loader {
@@ -73,7 +74,7 @@
     .effect-carousel {
       position: fixed !important;
       width: 100%;
-      height: 130px;
+      height: 60px;
       bottom: 0px;
       z-index: 999999;
       background-color: rgba(255, 255, 255, 0.7);
@@ -88,7 +89,7 @@
       position: relative;
       opacity: 0.8;
       transition: all 300ms ease;
-      height: 100px;
+      height: 30px;
     }
 
     .slick-center .thumb {
@@ -105,39 +106,41 @@
       width: 130px;
     }
   </style>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="jquery/slick.css" />
 </head>
 
 <body>
-  <canvas class="deepar" id="deepar-canvas"></canvas>
-  <div id="loader-wrapper">
-    <span class="loader"></span></span>
-  </div>
+<button id="btnStart">Start</button>
+<canvas class="deepar" id="deepar-canvas"></canvas>
+<div id="loader-wrapper">
+  <span class="loader"></span></span>
+</div>
 
-  <div class="effect-carousel">
-    <div><img class="thumb" src="thumbs/viking.png"></div>
-      <div><img class="thumb" src="thumbs/makeup.png"></div>
-      <div><img class="thumb" src="thumbs/makeup-split.png"></div>
-      <div><img class="thumb" src="thumbs/stallone.png"></div>
-      <div><img class="thumb" src="thumbs/flower_face.png"></div>
-      <div><img class="thumb" src="thumbs/galaxy.png"></div>
-      <div><img class="thumb" src="thumbs/humanoid.png"></div>
-      <div><img class="thumb" src="thumbs/devil_horns.png"></div>
-      <div><img class="thumb" src="thumbs/ping_pong.png"></div>
-      <div><img class="thumb" src="thumbs/pixel_hearts.png"></div>
-      <div><img class="thumb" src="thumbs/snail.png"></div>
-      <div><img class="thumb" src="thumbs/hope.png"></div>
-      <div><img class="thumb" src="thumbs/vendetta.png"></div>
-      <div><img class="thumb" src="thumbs/fire.png"></div>
-      <div><img class="thumb" src="thumbs/elephant_trunk.png"></div>
-  </div>
-  
-  
+<div class="effect-carousel">
+  <div><img class="thumb" src="thumbs/viking.png"></div>
+  <div><img class="thumb" src="thumbs/makeup.png"></div>
+  <div><img class="thumb" src="thumbs/makeup-split.png"></div>
+  <div><img class="thumb" src="thumbs/stallone.png"></div>
+  <div><img class="thumb" src="thumbs/flower_face.png"></div>
+  <div><img class="thumb" src="thumbs/galaxy.png"></div>
+  <div><img class="thumb" src="thumbs/humanoid.png"></div>
+  <div><img class="thumb" src="thumbs/devil_horns.png"></div>
+  <div><img class="thumb" src="thumbs/ping_pong.png"></div>
+  <div><img class="thumb" src="thumbs/pixel_hearts.png"></div>
+  <div><img class="thumb" src="thumbs/snail.png"></div>
+  <div><img class="thumb" src="thumbs/hope.png"></div>
+  <div><img class="thumb" src="thumbs/vendetta.png"></div>
+  <div><img class="thumb" src="thumbs/fire.png"></div>
+  <div><img class="thumb" src="thumbs/elephant_trunk.png"></div>
+</div>
 
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script type="text/javascript" src="main.js"></script>
+
+
+<script type="text/javascript" src="jquery/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="jquery/slick.min.js"></script>
+<script type="text/javascript" src="deepar/js/deepar.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>
