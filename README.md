@@ -19,6 +19,6 @@ It is important to have `wasm-unsafe-eval` CSP flag otherwise Chrome extension c
 - Contact DeepAR Support to setup dev and prod license keys for Chrome extension.
 - Paste license key into `src/index.js` (replace `your_license_key_goes_here`).
 - Run `npm install`.
-- Run `npm run dev`.
+- Run `npm run build`.
 - The `dist` folder now contains the Chrome extension packet.
 

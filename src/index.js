@@ -43,7 +43,7 @@ const startFn = async function() {
 
   // Initialize DeepAR with an effect file.
   const deepAR = await deepar.initialize({
-    licenseKey: '88228022645b747cdf497fa69d4ee9caa4ced3b31acb305fe10a2a7cc692dc30975e51a7b0109dff',
+    licenseKey: 'your_license_key_here',
     canvas: canvas,
     rootPath: "./deepar-resources", // See webpack.config.js and package.json build script.
     effect: effectList[0]
