@@ -4,7 +4,7 @@
   "description": "Quickstart project for DeepAR Web.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack --config webpack.config.js --mode production && cp -r public/* dist && cp -r node_modules/deepar",
+    "build": "rm -rf dist && webpack --config webpack.config.js --mode production && cp -r public/* dist && cp -r node_modules/deepar dist/deepar-resources",
     "dev": "webpack serve --mode development --open --port 8888"
   },
   "author": "",

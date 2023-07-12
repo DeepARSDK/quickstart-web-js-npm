@@ -45,6 +45,10 @@ console.log("Deepar version: " + deepar.version);
       licenseKey: "your_license_key_goes_here",
       canvas,
       effect: effectList[0],
+      // Removing the rootPath option will make DeepAR load the resources from the JSdelivr CDN,
+      // which is fine for development but is not recommended for production since it's not optimized for performance and can be unstable.
+      // More info here: https://docs.deepar.ai/deepar-sdk/deep-ar-sdk-for-web/download-optimizations#custom-deployment-of-deepar-web-resources
+      rootPath: "./deepar-resources",
     });
   } catch (error) {
     console.error(error);
