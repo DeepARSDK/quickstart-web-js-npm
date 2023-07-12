@@ -37,12 +37,21 @@ console.log("Deepar version: " + deepar.version);
     "effects/Fire_Effect.deepar",
   ];
 
+  let deepAR = null;
+
   // Initialize DeepAR with an effect file.
-  const deepAR = await deepar.initialize({
-    licenseKey: "your_license_key_goes_here",
-    canvas,
-    effect: effectList[0],
-  });
+  try {
+    deepAR = await deepar.initialize({
+      licenseKey: "your_license_key_goes_here",
+      canvas,
+      effect: effectList[0],
+    });
+  } catch (error) {
+    console.error(error);
+    document.getElementById("loading-screen").style.display = "none";
+    document.getElementById("permission-denied-screen").style.display = "block";
+    return;
+  }
 
   var resizeCanvas = function () {
     const canvas = document.getElementById("deepar-canvas");
