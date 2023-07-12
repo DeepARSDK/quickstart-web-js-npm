@@ -1,143 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
+    />
+    <title>DeepAR Web SDK - Face and body AR in the browser</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-  <title>DeepAR</title>
-  <style>
-    canvas.deepar {
-      border: 0px none;
-      background-color: black;
-      display: block;
-      margin: auto;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
+  <body>
+    <!-- loading screen -->
+    <div class="fixed-fullscreen" id="loading-screen">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <img
+          id="initial-loading-logo"
+          style="max-width: 200px"
+          src="/images/crystal.png"
+          class="animate-bounce"
+        />
+        <div
+          style="
+            width: 100%;
+            height: 8px;
+            margin-top: 20px;
+            background-color: rgb(55 65 81 / 1);
+            border-radius: 100px;
+            overflow: hidden;
+          "
+        >
+          <div id="loading-progress-bar"></div>
+        </div>
+        <img
+          id="initial-loading-text"
+          style="max-width: 140px; margin-top: 30px"
+          src="/images/powered-by.svg"
+        />
+      </div>
+    </div>
 
-    body {
-      margin: 0px;
-      padding: 0px;
-    }
+    <!-- permission denied screen -->
+    <div
+      class="fixed-fullscreen screen"
+      id="permission-denied-screen"
+      style="display: none"
+    >
+      <div class="permission-denied-text-container">
+        <div class="permission-denied-text" id="camera_denied">
+          <p>Please reload and allow camera access to use this app.</p>
+          <button id="camera-denied-button" class="info-button">
+            Discover more
+          </button>
+        </div>
+      </div>
+    </div>
 
-    #loader-wrapper {
-      position: fixed;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      text-align: center;
-    }
+    <!-- AR screen -->
+    <div id="ar-screen" style="display: none">
+      <canvas class="deepar" id="deepar-canvas"></canvas>
 
-    .loader {
-      display: inline-block;
-      position: relative;
-      top: 42%;
-      z-index: 1000;
+      <div class="carousel" id="carousel">
+        <div class="carousel-center" id="carousel-center">
+          <div class="lds-ring" id="loading-spinner" style="display: none">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="carousel-slider">
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/ray-ban-wayfarer.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/viking.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/makeup.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/makeup-split.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/flower_face.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/stallone.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/galaxy.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/humanoid.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/devil_horns.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/ping_pong.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/pixel_hearts.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/snail.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/hope.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/vendetta.png" />
+          </div>
+          <div class="slide">
+            <img class="responsive-img" src="thumbs/fire.png" />
+          </div>
+        </div>
+      </div>
+    </div>
 
-      width: 90px;
-      height: 90px;
-      margin: auto;
-      background-color: #00f;
-
-      border-radius: 100%;
-      -webkit-animation: sk-scaleout 1.5s infinite ease-in-out;
-      animation: sk-scaleout 1.5s infinite ease-in-out;
-    }
-
-    @-webkit-keyframes sk-scaleout {
-      0% {
-        -webkit-transform: scale(0)
-      }
-
-      100% {
-        -webkit-transform: scale(1.0);
-        opacity: 0;
-      }
-    }
-
-    @keyframes sk-scaleout {
-      0% {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-      }
-
-      100% {
-        -webkit-transform: scale(1.0);
-        transform: scale(1.0);
-        opacity: 0;
-      }
-    }
-
-    .effect-carousel {
-      position: fixed !important;
-      width: 100%;
-      height: 130px;
-      bottom: 0px;
-      z-index: 999999;
-      background-color: rgba(255, 255, 255, 0.7);
-      display: none;
-    }
-
-    .thumb {
-      margin-top: 15px;
-      margin-bottom: 15px;
-      margin-right: auto;
-      margin-left: auto;
-      position: relative;
-      opacity: 0.8;
-      transition: all 300ms ease;
-      height: 100px;
-    }
-
-    .slick-center .thumb {
-      -moz-transform: scale(1.3);
-      -ms-transform: scale(1.3);
-      -o-transform: scale(1.3);
-      -webkit-transform: scale(1.3);
-      color: #e67e22;
-      opacity: 1;
-      transform: scale(1.3);
-    }
-
-    .slick-slide {
-      width: 130px;
-    }
-  </style>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-</head>
-
-<body>
-  <canvas class="deepar" id="deepar-canvas"></canvas>
-  <div id="loader-wrapper">
-    <span class="loader"></span></span>
-  </div>
-
-  <div class="effect-carousel">
-    <div><img class="thumb" src="thumbs/viking.png"></div>
-      <div><img class="thumb" src="thumbs/makeup.png"></div>
-      <div><img class="thumb" src="thumbs/makeup-split.png"></div>
-      <div><img class="thumb" src="thumbs/stallone.png"></div>
-      <div><img class="thumb" src="thumbs/flower_face.png"></div>
-      <div><img class="thumb" src="thumbs/galaxy.png"></div>
-      <div><img class="thumb" src="thumbs/humanoid.png"></div>
-      <div><img class="thumb" src="thumbs/devil_horns.png"></div>
-      <div><img class="thumb" src="thumbs/ping_pong.png"></div>
-      <div><img class="thumb" src="thumbs/pixel_hearts.png"></div>
-      <div><img class="thumb" src="thumbs/snail.png"></div>
-      <div><img class="thumb" src="thumbs/hope.png"></div>
-      <div><img class="thumb" src="thumbs/vendetta.png"></div>
-      <div><img class="thumb" src="thumbs/fire.png"></div>
-      <div><img class="thumb" src="thumbs/elephant_trunk.png"></div>
-  </div>
-  
-  
-
-  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  <script type="text/javascript" src="main.js"></script>
-</body>
-
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
