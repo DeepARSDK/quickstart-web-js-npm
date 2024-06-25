@@ -1,0 +1,22 @@
+{
+  "name": "deepar",
+  "version": "5.6.0",
+  "description": "The official DeepAR Web SDK",
+  "main": "js/deepar.esm.js",
+  "jsdelivr": "js/deepar.js",
+  "typings": "js/types/index.d.ts",
+  "keywords": [
+    "deepar",
+    "web",
+    "sdk",
+    "ar",
+    "effects",
+    "bacground removal",
+    "bacground replacement",
+    "background blur",
+    "shoe try-on",
+    "AR mini-games"
+  ],
+  "author": "deepar",
+  "license": "SEE LICENSE IN LICENSE.txt"
+}
