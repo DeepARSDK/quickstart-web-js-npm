@@ -39,7 +39,7 @@ console.log("Deepar version: " + deepar.version);
   // Initialize DeepAR with an effect file.
   try {
     deepAR = await deepar.initialize({
-      licenseKey: "your_license_key_goes_here",
+      licenseKey: "d3a8bb29ad0be45eaf47de675d56ab0a4b7860bfaed78a8d1b92a1ed4d055b16f15aec2b271e3f2b",
       previewElement,
       effect: effectList[0],
       // Removing the rootPath option will make DeepAR load the resources from the JSdelivr CDN,
@@ -62,11 +62,28 @@ console.log("Deepar version: " + deepar.version);
   // Hide the loading screen.
   document.getElementById("loading-screen").style.display = "none";
   document.getElementById("ar-screen").style.display = "block";
+  const takePhotoBtn = document.getElementById('take-photo-btn');
 
   window.effect = effectList[0];
 
   const glassesCarousel = new Carousel("carousel");
   glassesCarousel.onChange = async (value) => {
+    takePhotoBtn.addEventListener('click', async () => {
+      if (deepAR) {
+        try {
+          const screenshotData = await deepAR.takeScreenshot();
+          const link = document.createElement('a');
+          link.href = screenshotData;
+          link.download = 'photo.png';
+          link.click();
+        } catch (error) {
+          console.error('Error taking screenshot: ', error);
+        }
+      } else {
+        console.error('DeepAR is not initialized.');
+      }
+    });
+    
     const loadingSpinner = document.getElementById("loading-spinner");
 
     if (window.effect !== effectList[value]) {

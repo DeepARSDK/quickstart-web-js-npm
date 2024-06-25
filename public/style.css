@@ -17,9 +17,11 @@ body {
 #loading-screen,
 #permission-denied-screen,
 #permission-denied-background {
-  background-color: rgb(17 24 39 / 1);
-  background-image: url("./images/gradient.svg"), url("./images/bg-grid-dark.svg");
-  background-repeat: no-repeat, repeat;
+  background-color: lightyellow;
+  background-image: url("./images/building.png");
+  background-repeat: no-repeat;
+  background-size: cover; /* This ensures the background image covers the entire screen */
+  background-position: center; /* This centers the background image */
   display: flex;
   align-items: center;
   justify-content: center;
